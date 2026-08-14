@@ -1,0 +1,377 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "CarePlus Home";
+}
+
+<!-- HERO SECTION -->
+<section class="hero-section min-h-[90vh] flex items-center pt-36 pb-24 lg:pb-32 relative">
+    <!-- Subtle noise texture overlay -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E'); mix-blend-mode: overlay;"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+            
+            <!-- Hero Content -->
+            <div class="reveal">
+                <div class="inline-flex items-center gap-2.5 bg-white/5 border border-white/10 backdrop-blur-md rounded-full px-4 py-1.5 mb-8">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span class="text-slate-300 text-xs font-semibold tracking-wide uppercase">Trusted by 10,000+ patients</span>
+                </div>
+
+                <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]">
+                    Healthcare<br/>
+                    <span class="text-gradient">Redefined.</span>
+                </h1>
+
+                <p class="mt-6 text-lg text-slate-400 max-w-lg leading-relaxed font-light">
+                    Experience the future of medical care. Seamless appointments, world-class specialists, and your health data — all in one intelligent platform.
+                </p>
+
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="~/Appointment" class="group inline-flex items-center gap-2.5 bg-white text-slate-900 font-semibold px-8 py-4 rounded-full hover:bg-slate-50 transition-all duration-300 shadow-xl shadow-white/10 hover:scale-105">
+                        Book Appointment
+                        <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                    </a>
+                    <a href="~/#services" class="inline-flex items-center gap-2 text-white font-medium px-8 py-4 rounded-full border border-white/20 hover:bg-white/10 backdrop-blur-sm transition-all duration-300">
+                        Explore Services
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Visuals (3D Animated Dashboard) -->
+            <div class="relative flex items-center justify-center lg:justify-end reveal delay-100 perspective-1000 w-full mt-12 lg:mt-0 lg:h-[500px] aspect-square lg:aspect-auto">
+                
+                <div class="relative w-full max-w-sm sm:max-w-md lg:max-w-lg aspect-square transform-3d animate-float-3d">
+                    
+                    <!-- Main Dashboard Panel -->
+                    <div class="absolute inset-0 m-auto w-[90%] h-[90%] md:w-[80%] md:h-[80%] glass-dark rounded-[2rem] md:rounded-[2.5rem] p-5 md:p-8 shadow-2xl border border-white/10 flex flex-col justify-between transform-3d translate-z-0 bg-slate-900/60 backdrop-blur-3xl">
+                        <!-- Header -->
+                        <div class="flex justify-between items-start">
+                            <div class="flex gap-2 md:gap-3 items-center">
+                                <div class="w-8 h-8 md:w-10 md:h-10 rounded-xl md:rounded-2xl bg-primary/20 flex items-center justify-center border border-primary/30">
+                                    <div class="w-2 h-2 md:w-3 md:h-3 bg-primary rounded-full animate-pulse shadow-[0_0_10px_rgba(14,165,233,0.8)]"></div>
+                                </div>
+                                <div>
+                                    <span class="text-white font-bold block text-sm md:text-base">Live Vitals</span>
+                                    <span class="text-primary text-[10px] md:text-xs font-medium uppercase tracking-wider">System Active</span>
+                                </div>
+                            </div>
+                            <span class="text-slate-400 text-[10px] md:text-sm bg-white/5 px-2 md:px-3 py-1 rounded-full border border-white/10">ID: #8924</span>
+                        </div>
+                        
+                        <!-- Heart Rate Graph -->
+                        <div class="relative h-16 md:h-28 mt-4 md:mt-6 w-full flex items-end">
+                            <svg class="w-full h-full stroke-primary drop-shadow-[0_0_8px_rgba(14,165,233,0.6)]" viewBox="0 0 100 30" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path class="animate-dash" d="M0,15 L20,15 L25,5 L30,25 L35,15 L60,15 L65,10 L70,20 L75,15 L100,15"></path>
+                            </svg>
+                            <!-- Grid lines -->
+                            <div class="absolute inset-0 border-b border-dashed border-white/10 top-1/2"></div>
+                            <div class="absolute inset-0 border-b border-dashed border-white/10 top-0"></div>
+                        </div>
+                        
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-2 gap-3 md:gap-4 mt-4 md:mt-6">
+                            <div class="bg-gradient-to-br from-white/10 to-transparent rounded-xl md:rounded-2xl p-3 md:p-4 border border-white/10 relative overflow-hidden group">
+                                <div class="absolute -right-4 -top-4 w-12 h-12 md:w-16 md:h-16 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/40 transition-colors"></div>
+                                <span class="text-slate-400 text-[9px] md:text-xs uppercase tracking-wider font-semibold">Heart Rate</span>
+                                <div class="text-white text-lg md:text-3xl font-display font-bold mt-1">72 <span class="text-primary text-[10px] md:text-sm font-medium">bpm</span></div>
+                            </div>
+                            <div class="bg-gradient-to-br from-white/10 to-transparent rounded-xl md:rounded-2xl p-3 md:p-4 border border-white/10 relative overflow-hidden group">
+                                <div class="absolute -right-4 -top-4 w-12 h-12 md:w-16 md:h-16 bg-secondary/20 rounded-full blur-xl group-hover:bg-secondary/40 transition-colors"></div>
+                                <span class="text-slate-400 text-[9px] md:text-xs uppercase tracking-wider font-semibold">Blood Pres</span>
+                                <div class="text-white text-lg md:text-3xl font-display font-bold mt-1">120<span class="text-slate-500 font-light text-[10px] md:text-base">/80</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Element 1: Analytics -->
+                    <div class="absolute top-2 right-2 md:-top-4 md:-right-4 w-40 md:w-56 glass-dark rounded-xl md:rounded-2xl p-3 md:p-4 shadow-2xl transform-3d translate-z-12 animate-float-delay-1 border border-accent/20 bg-slate-900/80 backdrop-blur-md">
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                                <svg class="w-4 h-4 md:w-5 md:h-5 text-accent animate-spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-[9px] md:text-[11px] text-slate-400 uppercase tracking-wider font-semibold">AI Analysis</p>
+                                <p class="text-[11px] md:text-sm font-bold text-white mt-0.5">Processing</p>
+                            </div>
+                        </div>
+                        <div class="mt-3 md:mt-4 h-1 md:h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-accent w-2/3 animate-pulse shadow-[0_0_10px_rgba(20,184,166,0.8)]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Element 2: Profile -->
+                    <div class="absolute bottom-2 left-2 md:-bottom-8 md:-left-8 w-44 md:w-64 glass-dark rounded-xl md:rounded-2xl p-3 md:p-4 shadow-2xl transform-3d translate-z-20 animate-float-delay-2 border border-secondary/30 bg-slate-900/80 backdrop-blur-md">
+                        <div class="flex items-center gap-2 md:gap-4">
+                            <div class="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-gradient-to-br from-secondary to-primary flex items-center justify-center shadow-[0_0_15px_rgba(139,92,246,0.5)] shrink-0">
+                                <svg class="w-4 h-4 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                            </div>
+                            <div>
+                                <p class="text-[9px] md:text-[11px] text-slate-400 uppercase tracking-wider font-semibold">Next Appt</p>
+                                <p class="text-[11px] md:text-sm font-bold text-white mt-0.5">Dr. Sarah · 3:30</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decorative rings -->
+                    <div class="absolute inset-0 m-auto w-[90%] h-[90%] border-[2px] md:border-[3px] border-primary/10 rounded-full transform-3d translate-z-[-10px] animate-spin-slow pointer-events-none"></div>
+                    <div class="absolute inset-0 m-auto w-[100%] md:w-[105%] h-[100%] md:h-[105%] border-2 border-dashed border-secondary/20 rounded-full transform-3d translate-z-[-20px] animate-spin-slow-reverse pointer-events-none"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- QUICK SEARCH BAR -->
+<section class="relative z-30 -mt-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto reveal">
+    <div class="glass-card rounded-[2rem] p-3 shadow-2xl">
+        <form class="bg-white rounded-[1.5rem] p-2 flex flex-col md:flex-row gap-2">
+            
+            <div class="flex-1 relative">
+                <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                </div>
+                <select class="modern-input w-full pl-12 pr-4 py-4 rounded-xl text-sm font-medium text-slate-700 appearance-none cursor-pointer border border-transparent bg-slate-50/50 hover:bg-slate-100/50">
+                    <option>All Departments</option>
+                    <option>Cardiology</option>
+                    <option>Neurology</option>
+                </select>
+            </div>
+
+            <div class="flex-1 relative">
+                <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>
+                </div>
+                <select class="modern-input w-full pl-12 pr-4 py-4 rounded-xl text-sm font-medium text-slate-700 appearance-none cursor-pointer border border-transparent bg-slate-50/50 hover:bg-slate-100/50">
+                    <option>Any Doctor</option>
+                    <option>Dr. Sarah Ahmed</option>
+                </select>
+            </div>
+
+            <div class="flex-1 relative">
+                <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>
+                </div>
+                <input type="date" value="2026-08-20" class="modern-input w-full pl-12 pr-4 py-4 rounded-xl text-sm font-medium text-slate-700 border border-transparent bg-slate-50/50 hover:bg-slate-100/50" />
+            </div>
+
+            <button type="submit" class="bg-slate-900 hover:bg-slate-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg shadow-slate-900/20 flex items-center justify-center gap-2 whitespace-nowrap">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                Search
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- SERVICES — BENTO GRID -->
+<section id="services" class="py-24 md:py-32 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-2xl reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-semibold text-sm mb-4">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> Services
+            </div>
+            <h2 class="font-display text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight">Comprehensive<br/>Healthcare Services</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            <!-- Large Card -->
+            <div class="md:col-span-2 bento-item bg-white rounded-[2rem] p-8 md:p-10 shadow-sm border border-slate-200/60 overflow-hidden relative group reveal">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-rose-100 text-rose-500 flex items-center justify-center mb-6">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0 0v3.75m0-3.75h3.75m-3.75 0H9m3.75 0v-3.75m0 0v-3.75M12 9V5.25M12 9h3.75M12 9H9" /></svg>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold text-slate-900">Emergency Care</h3>
+                        <p class="text-slate-500 mt-3 leading-relaxed max-w-md">24/7 emergency medical assistance with rapid response teams and state-of-the-art trauma care facilities. Every second counts.</p>
+                    </div>
+                    <div class="mt-8">
+                        <a href="#" class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">Learn more <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Small Card 1 -->
+            <div class="bento-item bg-white rounded-[2rem] p-8 shadow-sm border border-slate-200/60 overflow-hidden relative group reveal delay-100">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
+                </div>
+                <h3 class="text-xl font-display font-bold text-slate-900">Cardiology</h3>
+                <p class="text-slate-500 text-sm mt-3 leading-relaxed">Advanced heart and cardiovascular care with cutting-edge diagnostics.</p>
+            </div>
+
+            <!-- Small Card 2 -->
+            <div class="bento-item bg-white rounded-[2rem] p-8 shadow-sm border border-slate-200/60 overflow-hidden relative group reveal">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="w-12 h-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" /></svg>
+                </div>
+                <h3 class="text-xl font-display font-bold text-slate-900">Neurology</h3>
+                <p class="text-slate-500 text-sm mt-3 leading-relaxed">Specialized diagnosis and treatment of neurological conditions.</p>
+            </div>
+
+            <!-- Small Card 3 -->
+            <div class="bento-item bg-white rounded-[2rem] p-8 shadow-sm border border-slate-200/60 overflow-hidden relative group reveal delay-100">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5" /></svg>
+                </div>
+                <h3 class="text-xl font-display font-bold text-slate-900">Orthopedics</h3>
+                <p class="text-slate-500 text-sm mt-3 leading-relaxed">Bone, joint, and muscle care with advanced surgical options.</p>
+            </div>
+
+            <!-- Small Card 4 -->
+            <div class="bento-item bg-white rounded-[2rem] p-8 shadow-sm border border-slate-200/60 overflow-hidden relative group reveal delay-200">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
+                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-500 flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.143 17.082a24.248 24.248 0 003.844.148m-3.844-.148a23.856 23.856 0 01-5.455-1.31 8.964 8.964 0 002.3-5.542m3.155 6.852a3 3 0 005.667 1.97m-2.965-4.878a3 3 0 10-4.722-3.706m3.155 6.852a3 3 0 005.667 1.97m-2.965-4.878a3 3 0 10-4.722-3.706" /></svg>
+                </div>
+                <h3 class="text-xl font-display font-bold text-slate-900">Dental Care</h3>
+                <p class="text-slate-500 text-sm mt-3 leading-relaxed">Complete dental and oral healthcare from routine checkups.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DOCTORS -->
+<section id="doctors" class="py-24 md:py-32 bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 reveal">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary font-semibold text-sm mb-4">
+                    <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> Our Team
+                </div>
+                <h2 class="font-display text-4xl sm:text-5xl font-bold text-slate-900 tracking-tight">Meet Our Specialists</h2>
+            </div>
+            <a href="~/Doctor" class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+                View all doctors <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+            <!-- Doc 1 -->
+            <div class="doc-card relative rounded-[2rem] bg-slate-50 overflow-hidden shadow-sm border border-slate-200/60 reveal">
+                <div class="aspect-[4/5] relative">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&h=625&fit=crop&crop=face&auto=format" alt="Dr. Sarah Ahmed" class="w-full h-full object-cover object-top" />
+                    <div class="doc-overlay">
+                        <div class="doc-actions w-full">
+                            <button class="w-full bg-white text-slate-900 font-semibold py-3 rounded-xl hover:bg-primary hover:text-white transition-colors duration-300">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-white border-t border-slate-100">
+                    <h4 class="text-xl font-display font-bold text-slate-900">Dr. Sarah Ahmed</h4>
+                    <p class="text-sm text-primary font-medium mt-1">Cardiologist</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xs font-medium text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md">15 Yrs Exp</span>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <span class="text-sm font-bold text-slate-700">4.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doc 2 -->
+            <div class="doc-card relative rounded-[2rem] bg-slate-50 overflow-hidden shadow-sm border border-slate-200/60 reveal delay-100">
+                <div class="aspect-[4/5] relative">
+                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&h=625&fit=crop&crop=face&auto=format" alt="Dr. Michael Rahman" class="w-full h-full object-cover object-top" />
+                    <div class="doc-overlay">
+                        <div class="doc-actions w-full">
+                            <button class="w-full bg-white text-slate-900 font-semibold py-3 rounded-xl hover:bg-primary hover:text-white transition-colors duration-300">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-white border-t border-slate-100">
+                    <h4 class="text-xl font-display font-bold text-slate-900">Dr. M. Rahman</h4>
+                    <p class="text-sm text-primary font-medium mt-1">Neurologist</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xs font-medium text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md">12 Yrs Exp</span>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <span class="text-sm font-bold text-slate-700">4.8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doc 3 -->
+            <div class="doc-card relative rounded-[2rem] bg-slate-50 overflow-hidden shadow-sm border border-slate-200/60 reveal delay-200">
+                <div class="aspect-[4/5] relative">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&h=625&fit=crop&crop=face&auto=format" alt="Dr. Emily Khan" class="w-full h-full object-cover object-top" />
+                    <div class="doc-overlay">
+                        <div class="doc-actions w-full">
+                            <button class="w-full bg-white text-slate-900 font-semibold py-3 rounded-xl hover:bg-primary hover:text-white transition-colors duration-300">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-white border-t border-slate-100">
+                    <h4 class="text-xl font-display font-bold text-slate-900">Dr. Emily Khan</h4>
+                    <p class="text-sm text-primary font-medium mt-1">Orthopedics</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xs font-medium text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md">10 Yrs Exp</span>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <span class="text-sm font-bold text-slate-700">4.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doc 4 -->
+            <div class="doc-card relative rounded-[2rem] bg-slate-50 overflow-hidden shadow-sm border border-slate-200/60 reveal">
+                <div class="aspect-[4/5] relative">
+                    <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=500&h=625&fit=crop&crop=face&auto=format" alt="Dr. James Lee" class="w-full h-full object-cover object-top" />
+                    <div class="doc-overlay">
+                        <div class="doc-actions w-full">
+                            <button class="w-full bg-white text-slate-900 font-semibold py-3 rounded-xl hover:bg-primary hover:text-white transition-colors duration-300">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-white border-t border-slate-100">
+                    <h4 class="text-xl font-display font-bold text-slate-900">Dr. James Lee</h4>
+                    <p class="text-sm text-primary font-medium mt-1">Pediatrician</p>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-xs font-medium text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md">8 Yrs Exp</span>
+                        <div class="flex items-center gap-1">
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                            <span class="text-sm font-bold text-slate-700">4.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="py-24 md:py-32 relative px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <div class="mesh-cta rounded-[3rem] p-12 md:p-20 text-center shadow-2xl relative overflow-hidden reveal">
+        <!-- Glass Overlay -->
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-[2px]"></div>
+        
+        <div class="relative z-10">
+            <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-tight">
+                Take the First Step<br/>Toward Better Health
+            </h2>
+            <p class="text-slate-300 text-lg mt-6 max-w-xl mx-auto font-light">
+                Join thousands of patients who trust CarePlus. Find the right doctor and book your appointment today.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-10">
+                <a href="~/Appointment" class="bg-white text-slate-900 hover:scale-105 font-bold px-8 py-4 rounded-full shadow-xl shadow-black/20 transition-all duration-300">
+                    Book an Appointment
+                </a>
+                <a href="~/Contact" class="bg-white/10 hover:bg-white/20 text-white font-medium px-8 py-4 rounded-full backdrop-blur-md border border-white/20 transition-all duration-300">
+                    Contact Support
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
