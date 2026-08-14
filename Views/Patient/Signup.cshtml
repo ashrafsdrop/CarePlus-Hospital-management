@@ -1,6 +1,89 @@
+@model HospitalManagementSystem.Models.Patient
 @{
-    ViewData["Title"] = "Create Account - CarePlus";
+    ViewData["Title"] = "Create Patient Profile - CarePlus";
     ViewData["HideHeaderFooter"] = true;
+}
+
+@section Head {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        /* Stunning Dark Glassmorphism Flatpickr Inline Modal */
+        .flatpickr-calendar {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            font-family: 'Inter', sans-serif !important;
+            width: 100% !important;
+            color: #fff !important;
+        }
+        
+        /* Hide Default Header completely - we are building a custom one! */
+        .flatpickr-months {
+            display: none !important;
+        }
+        
+        /* Grid Styling */
+        .flatpickr-weekdays {
+            margin-bottom: 10px;
+        }
+        .flatpickr-weekday {
+            color: #94a3b8 !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+        }
+        .flatpickr-days {
+            width: 100% !important;
+        }
+        .dayContainer {
+            width: 100% !important;
+            min-width: 100% !important;
+            max-width: 100% !important;
+        }
+        .flatpickr-day {
+            color: #e2e8f0 !important;
+            border-radius: 50% !important;
+            font-weight: 500 !important;
+            background: transparent !important;
+            border: none !important;
+            transition: all 0.2s ease !important;
+            width: 14.28% !important;
+            max-width: 40px !important;
+            height: 40px !important;
+            line-height: 40px !important;
+            margin: auto !important;
+        }
+        .flatpickr-day:hover, .flatpickr-day.prevMonthDay:hover, .flatpickr-day.nextMonthDay:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
+        }
+        .flatpickr-day.selected {
+            background: #8b5cf6 !important;
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5) !important;
+            color: #fff !important;
+            font-weight: 600 !important;
+            border: none !important;
+        }
+        .flatpickr-day.flatpickr-disabled, .flatpickr-day.prevMonthDay, .flatpickr-day.nextMonthDay {
+            color: #475569 !important;
+        }
+
+        /* Custom Scrollbar for Year grid */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
 }
 
 <!-- Auth Section -->
@@ -9,7 +92,7 @@
     <div class="absolute inset-0 z-0 mesh-cta opacity-50"></div>
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E'); mix-blend-mode: overlay;"></div>
 
-    <div class="relative z-10 w-full max-w-xl reveal">
+    <div class="relative z-10 w-full max-w-2xl reveal">
         <!-- Card -->
         <div class="glass-dark rounded-[2.5rem] p-8 sm:p-10 shadow-2xl border border-white/10 bg-slate-900/60 backdrop-blur-3xl">
             
@@ -17,48 +100,273 @@
                 <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary to-primary mb-6 shadow-lg shadow-secondary/20">
                     <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 19v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2m16-10a4 4 0 11-8 0 4 4 0 018 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M22 11v2m-2-2h4" /></svg>
                 </div>
-                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Join CarePlus</h2>
-                <p class="text-sm text-slate-400 mt-2">Create an account to manage your health data</p>
+                <h2 class="text-3xl font-display font-bold text-white tracking-tight">Patient Registration</h2>
+                <p class="text-sm text-slate-400 mt-2">Create your secure CarePlus patient portal</p>
             </div>
 
             <form class="space-y-5">
+                
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2" for="firstName">First name</label>
-                        <input type="text" id="firstName" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="John" />
+                        <label class="block text-sm font-medium text-slate-300 mb-2" for="FullName">Full Name</label>
+                        <input type="text" id="FullName" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="John Doe" />
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-2" for="lastName">Last name</label>
-                        <input type="text" id="lastName" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Doe" />
+                        <label class="block text-sm font-medium text-slate-300 mb-2" for="Email">Email Address</label>
+                        <input type="email" id="Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="you@example.com" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2" for="Phone">Phone Number</label>
+                        <input type="tel" id="Phone" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="+1 (555) 000-0000" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2" for="DateOfBirthDisplay">Date of Birth</label>
+                        <!-- Visual input triggers the custom modal -->
+                        <input type="text" id="DateOfBirthDisplay" readonly onclick="openDobModal()" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all cursor-pointer" placeholder="Select your birth date" />
+                        <!-- Hidden input stores actual date value silently -->
+                        <input type="hidden" id="DateOfBirth" name="DateOfBirth" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2" for="Gender">Gender</label>
+                        <div class="relative">
+                            <select id="Gender" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none cursor-pointer">
+                                <option value="" disabled selected class="bg-slate-900 text-slate-400">Select Gender</option>
+                                <option value="Male" class="bg-slate-900 text-white">Male</option>
+                                <option value="Female" class="bg-slate-900 text-white">Female</option>
+                                <option value="Other" class="bg-slate-900 text-white">Other</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2" for="BloodGroup">Blood Group</label>
+                        <div class="relative">
+                            <select id="BloodGroup" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none cursor-pointer">
+                                <option value="" disabled selected class="bg-slate-900 text-slate-400">Select Blood Group</option>
+                                <option value="A+" class="bg-slate-900 text-white">A+</option>
+                                <option value="A-" class="bg-slate-900 text-white">A-</option>
+                                <option value="B+" class="bg-slate-900 text-white">B+</option>
+                                <option value="B-" class="bg-slate-900 text-white">B-</option>
+                                <option value="O+" class="bg-slate-900 text-white">O+</option>
+                                <option value="O-" class="bg-slate-900 text-white">O-</option>
+                                <option value="AB+" class="bg-slate-900 text-white">AB+</option>
+                                <option value="AB-" class="bg-slate-900 text-white">AB-</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-2" for="email">Email address</label>
-                    <input type="email" id="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="you@example.com" />
-                </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-slate-300 mb-2" for="password">Password</label>
-                    <input type="password" id="password" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Create a strong password" />
+                    <label class="block text-sm font-medium text-slate-300 mb-2" for="Address">Address</label>
+                    <input type="text" id="Address" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="123 Health Ave, Medical City" />
                 </div>
 
-                <div class="flex items-start">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2" for="EmergencyContact">Emergency Contact</label>
+                        <input type="text" id="EmergencyContact" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Jane Doe (Wife) - 555-0199" />
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2" for="password">Create Password</label>
+                        <input type="password" id="password" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Strong password" />
+                    </div>
+                </div>
+
+                <div class="flex items-start pt-2">
                     <input type="checkbox" id="terms" class="mt-1 w-4 h-4 rounded bg-white/5 border-white/10 text-primary focus:ring-primary focus:ring-offset-slate-900" />
                     <label for="terms" class="ml-2 text-sm text-slate-400 leading-relaxed">
-                        I agree to the <a href="#" class="text-primary hover:text-accent transition-colors">Terms of Service</a> and <a href="#" class="text-primary hover:text-accent transition-colors">Privacy Policy</a>.
+                        I agree to the <a href="#" class="text-primary hover:text-accent transition-colors">Terms of Service</a> and confirm my medical details are accurate.
                     </label>
                 </div>
 
-                <button type="button" class="w-full bg-gradient-to-r from-primary to-secondary hover:from-accent hover:to-primary text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-primary/25 transition-all duration-500 mt-4">
-                    Create Account
+                <button type="button" class="w-full bg-gradient-to-r from-primary to-secondary hover:from-accent hover:to-primary text-white font-semibold py-3.5 rounded-xl shadow-[0_0_20px_rgba(14,165,233,0.3)] hover:shadow-[0_0_25px_rgba(20,184,166,0.5)] transition-all duration-500 mt-4">
+                    Complete Registration
                 </button>
             </form>
 
             <div class="mt-8 text-center text-sm text-slate-400">
-                Already have an account? 
+                Already registered? 
                 <a href="~/Patient/Login" class="font-semibold text-white hover:text-primary transition-colors">Sign in instead</a>
             </div>
         </div>
     </div>
+
+    <!-- The Ultimate Custom Date Modal -->
+    <div id="dobModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity" onclick="closeDobModal()"></div>
+        
+        <!-- Modal Body -->
+        <div class="glass-dark rounded-[2rem] p-6 w-full max-w-sm relative z-10 shadow-2xl border border-white/10 flex flex-col min-h-[400px]">
+            
+            <!-- Custom Navigation Header -->
+            <div class="flex justify-between items-center mb-6 px-2">
+                <div class="flex gap-2 items-baseline">
+                    <button type="button" onclick="showMonthPicker()" id="customMonthBtn" class="text-xl font-bold text-white hover:text-primary transition-colors"></button>
+                    <button type="button" onclick="showYearPicker()" id="customYearBtn" class="text-xl font-bold text-white hover:text-primary transition-colors"></button>
+                </div>
+                <div class="flex gap-2">
+                    <button type="button" onclick="fpInstance.changeMonth(-1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-300 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button type="button" onclick="fpInstance.changeMonth(1)" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 text-slate-300 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Calendar View (Flatpickr attaches here safely) -->
+            <div id="calendarView" class="flex-1 flex flex-col justify-center w-full">
+                <input type="text" id="dummyFlatpickr" class="hidden" />
+                <div id="flatpickr-inline-container" class="w-full"></div>
+            </div>
+
+            <!-- Month Picker View (Hidden by default) -->
+            <div id="monthView" class="hidden flex-1 grid-cols-3 gap-3 content-start">
+                <!-- JS populated -->
+            </div>
+
+            <!-- Year Picker View (Hidden by default) -->
+            <div id="yearView" class="hidden flex-1 grid-cols-4 gap-2 content-start overflow-y-auto max-h-[250px] pr-2 custom-scrollbar">
+                <!-- JS populated -->
+            </div>
+            
+            <div class="flex gap-3 mt-6">
+                <button type="button" onclick="closeDobModal()" class="flex-1 py-3 rounded-xl border border-white/10 text-slate-300 hover:text-white hover:bg-white/5 transition-colors font-semibold">Cancel</button>
+                <button type="button" onclick="confirmDob()" class="flex-1 py-3 rounded-xl bg-primary text-white font-semibold hover:bg-accent transition-colors shadow-[0_0_15px_rgba(14,165,233,0.3)]">Confirm Date</button>
+            </div>
+        </div>
+    </div>
 </section>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        let fpInstance;
+        const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Flatpickr on the DUMMY input inside the modal
+            // This prevents ANY weird white boxes from generating under the main form!
+            fpInstance = flatpickr("#dummyFlatpickr", {
+                inline: true,
+                appendTo: document.getElementById("flatpickr-inline-container"),
+                dateFormat: "Y-m-d",
+                disableMobile: true,
+                maxDate: "today",
+                onMonthChange: function() { updateCustomHeader(); },
+                onYearChange: function() { updateCustomHeader(); },
+                onChange: function() { updateCustomHeader(); }
+            });
+            
+            updateCustomHeader();
+        });
+
+        // Update the textual Month/Year in our custom header
+        function updateCustomHeader() {
+            document.getElementById("customMonthBtn").innerText = monthNames[fpInstance.currentMonth];
+            document.getElementById("customYearBtn").innerText = fpInstance.currentYear;
+        }
+
+        // Generate and show Month grid
+        function showMonthPicker() {
+            document.getElementById("calendarView").classList.add("hidden");
+            document.getElementById("yearView").classList.add("hidden");
+            
+            const monthView = document.getElementById("monthView");
+            monthView.innerHTML = "";
+            monthNames.forEach((m, i) => {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "py-3 rounded-xl text-sm font-semibold transition-all " + 
+                    (fpInstance.currentMonth === i ? "bg-primary text-white shadow-lg shadow-primary/30" : "bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white");
+                btn.innerText = m.substring(0, 3);
+                btn.onclick = () => {
+                    fpInstance.changeMonth(i, false);
+                    updateCustomHeader();
+                    showCalendarView();
+                };
+                monthView.appendChild(btn);
+            });
+
+            monthView.classList.remove("hidden");
+            monthView.classList.add("grid");
+        }
+
+        // Generate and show Year grid
+        function showYearPicker() {
+            document.getElementById("calendarView").classList.add("hidden");
+            document.getElementById("monthView").classList.add("hidden");
+            
+            const yearView = document.getElementById("yearView");
+            yearView.innerHTML = "";
+            const currentYear = new Date().getFullYear();
+            for(let y = currentYear; y >= 1900; y--) {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "py-2 rounded-lg text-sm font-semibold transition-all " + 
+                    (fpInstance.currentYear === y ? "bg-primary text-white shadow-lg shadow-primary/30" : "bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white");
+                btn.innerText = y;
+                btn.onclick = () => {
+                    fpInstance.changeYear(y);
+                    updateCustomHeader();
+                    showCalendarView();
+                };
+                yearView.appendChild(btn);
+            }
+
+            yearView.classList.remove("hidden");
+            yearView.classList.add("grid");
+        }
+
+        // Show the main days grid
+        function showCalendarView() {
+            document.getElementById("monthView").classList.add("hidden");
+            document.getElementById("monthView").classList.remove("grid");
+            document.getElementById("yearView").classList.add("hidden");
+            document.getElementById("yearView").classList.remove("grid");
+            
+            document.getElementById("calendarView").classList.remove("hidden");
+        }
+
+        // Modal Controls
+        function openDobModal() {
+            const modal = document.getElementById("dobModal");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            showCalendarView(); // Always open to the days view
+        }
+
+        function closeDobModal() {
+            const modal = document.getElementById("dobModal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        }
+
+        function confirmDob() {
+            const selected = fpInstance.selectedDates[0];
+            if(selected) {
+                // Update display input on the main form
+                const display = selected.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById("DateOfBirthDisplay").value = display;
+                
+                // Save actual format to the hidden input
+                const offset = selected.getTimezoneOffset()
+                const realDate = new Date(selected.getTime() - (offset*60*1000))
+                document.getElementById("DateOfBirth").value = realDate.toISOString().split('T')[0];
+            }
+            closeDobModal();
+        }
+    </script>
+}
