@@ -15,6 +15,9 @@ public class Patient
 
     [Required, EmailAddress, MaxLength(100)]
     public string Email { get; set; } = string.Empty;
+
+    [Required, DataType(DataType.Password), MaxLength(100)]
+    public string Password { get; set; } = string.Empty;
     
     public string Phone { get; set; } = string.Empty;
     
