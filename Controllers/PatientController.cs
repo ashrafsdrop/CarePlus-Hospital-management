@@ -40,7 +40,8 @@ namespace HospitalManagementSystem.Controllers
             var claims = new List<System.Security.Claims.Claim>
             {
                 new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.NameIdentifier, existingUser.Id.ToString()),
-                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Email, existingUser.Email)
+                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Email, existingUser.Email),
+                new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Name, existingUser.FullName)
             };
 
             var identity = new System.Security.Claims.ClaimsIdentity(claims, "CookieAuth");
@@ -103,9 +104,24 @@ namespace HospitalManagementSystem.Controllers
             return View(patient);
         }
 
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
+            var userIdStr = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+            if (int.TryParse(userIdStr, out int userId))
+            {
+                var user = await _context.Patients.FindAsync(userId);
+                if (user != null)
+                {
+                    ViewBag.FullName = user.FullName;
+                }
+            }
             return View();
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync("CookieAuth");
+            return RedirectToAction("Index", "Home");
         }
 
 
