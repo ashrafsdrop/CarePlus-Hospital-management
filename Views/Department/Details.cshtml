@@ -1,0 +1,40 @@
+@model HospitalManagementSystem.Models.Department
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<div class="pt-28 pb-16 min-h-screen bg-slate-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-8">
+            <a asp-action="Index" class="inline-flex items-center text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors mb-4">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+                Back to List
+            </a>
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-display font-bold text-slate-900">Department Details</h1>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-100 text-slate-700 text-sm font-semibold rounded-full hover:bg-slate-200 transition-colors border border-slate-200">
+                    Edit
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-6 sm:p-8">
+                <dl class="space-y-6">
+                    <div>
+                        <dt class="text-sm font-medium text-slate-500">@Html.DisplayNameFor(model => model.Name)</dt>
+                        <dd class="mt-1 text-lg font-semibold text-slate-900">@Html.DisplayFor(model => model.Name)</dd>
+                    </div>
+                    <div>
+                        <dt class="text-sm font-medium text-slate-500">@Html.DisplayNameFor(model => model.Description)</dt>
+                        <dd class="mt-1 text-base text-slate-700">@(string.IsNullOrEmpty(Model.Description) ? "No description provided." : Model.Description)</dd>
+                    </div>
+                    <div>
+                        <dt class="text-sm font-medium text-slate-500">@Html.DisplayNameFor(model => model.CreatedAt)</dt>
+                        <dd class="mt-1 text-sm text-slate-700">@Model.CreatedAt.ToLocalTime().ToString("MMM dd, yyyy HH:mm")</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
